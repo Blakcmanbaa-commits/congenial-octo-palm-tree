@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>DentalVeda - Clínica Dental de Excelencia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #C9A84C;
+            --secondary: #8A7560;
+            --accent: #1E1E1E;
+            --dark: #0A0A0A;
+            --light: #111111;
+            --white: #F5F5F0;
+            --gray: #9A9A9A;
+            --gold: #D4AF6A;
+            --surface: #161616;
+            --border: rgba(201, 168, 76, 0.2);
+        }
+        * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+        html { scroll-behavior:smooth; }
+        body { font-family:'Montserrat',sans-serif; background:var(--dark); color:var(--white); line-height:1.7; overflow-x:hidden; }
+        nav { position:fixed; top:0; width:100%; background:rgba(10,10,10,0.95); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); z-index:1000; border-bottom:1px solid var(--border); transition:all 0.3s; padding-top:env(safe-area-inset-top); }
+        nav.scrolled { box-shadow:0 10px 40px rgba(0,0,0,0.5); }
+        .nav-container { max-width:1400px; margin:0 auto; padding:1.2rem 5%; display:flex; justify-content:space-between; align-items:center; }
+        .logo { font-family:'Cormorant Garamond',serif; font-size:1.9rem; font-weight:600; color:var(--primary); letter-spacing:0.05em; position:relative; }
+        .logo::after { content:''; position:absolute; bottom:-4px; left:0; width:35px; height:2px; background:var(--secondary); }
+        nav ul { display:flex; list-style:none; gap:2.5rem; align-items:center; }
+        nav a { color:var(--white); text-decoration:none; font-weight:500; font-size:0.9rem; letter-spacing:0.05em; transition:color 0.3s; }
+        nav a:hover { color:var(--primary); }
+        .nav-cta { padding:0.75rem 1.8rem; background:var(--primary); color:var(--dark)!important; border-radius:30px; font-weight:700; }
+        .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:8px; border:none; background:none; min-width:44px; min-height:44px; align-items:center; justify-content:center; }
+        .hamburger span { display:block; width:24px; height:2px; background:var(--white); border-radius:2px; transition:all 0.3s; }
+        .hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity:0; }
+        .hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+        .mobile-menu { display:none; flex-direction:column; background:rgba(10,10,10,0.98); border-top:1px solid var(--border); padding:1.5rem 5% 2rem; }
+        .mobile-menu.open { display:flex; }
+        .mobile-menu a { color:var(--white); text-decoration:none; font-weight:500; font-size:1.1rem; padding:1rem 0; border-bottom:1px solid rgba(255,255,255,0.06); transition:color 0.3s; }
+        .mobile-menu a:last-child { border-bottom:none; margin-top:1rem; padding:1rem 2rem; background:var(--primary); color:var(--dark); border-radius:30px; font-weight:700; text-align:center; }
+        .hero { min-height:100vh; display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:4rem; padding:8rem 5% 5rem; max-width:1400px; margin:0 auto; position:relative; }
+        .hero::before { content:''; position:absolute; top:15%; right:-5%; width:500px; height:500px; background:radial-gradient(circle,rgba(201,168,76,0.07) 0%,transparent 70%); border-radius:50%; z-index:0; pointer-events:none; }
+        .hero-content { animation:fadeInLeft 0.9s ease-out; position:relative; z-index:1; }
+        @keyframes fadeInLeft { from{opacity:0;transform:translateX(-25px)} to{opacity:1;transform:translateX(0)} }
+        .hero-subtitle { font-size:0.85rem; color:var(--primary); letter-spacing:0.25em; text-transform:uppercase; font-weight:600; margin-bottom:1.5rem; }
+        .hero-title { font-family:'Cormorant Garamond',serif; font-size:4rem; font-weight:600; line-height:1.2; color:var(--white); margin-bottom:1.8rem; letter-spacing:-0.02em; }
+        .hero-title span { color:var(--primary); }
+        .hero-description { font-size:1.05rem; color:var(--gray); margin-bottom:2.5rem; line-height:1.9; font-weight:300; }
+        .hero-buttons { display:flex; gap:1.2rem; flex-wrap:wrap; }
+        .btn-primary { padding:1rem 2.5rem; background:var(--primary); color:var(--dark); text-decoration:none; border-radius:50px; font-weight:700; letter-spacing:0.05em; transition:all 0.4s; display:inline-block; border:2px solid var(--primary); min-height:44px; font-size:0.95rem; }
+        .btn-primary:hover { background:transparent; color:var(--primary); transform:translateY(-3px); box-shadow:0 15px 40px rgba(201,168,76,0.25); }
+        .btn-secondary { padding:1rem 2.5rem; background:transparent; color:var(--white); text-decoration:none; border-radius:50px; font-weight:600; transition:all 0.4s; display:inline-block; border:2px solid rgba(255,255,255,0.25); min-height:44px; font-size:0.95rem; }
+        .btn-secondary:hover { border-color:var(--primary); color:var(--primary); transform:translateY(-3px); }
+        .hero-image { position:relative; animation:fadeInRight 0.9s ease-out 0.3s both; z-index:1; }
+        @keyframes fadeInRight { from{opacity:0;transform:translateX(25px)} to{opacity:1;transform:translateX(0)} }
+        .hero-image img { width:100%; height:580px; object-fit:cover; border-radius:20px; box-shadow:0 30px 80px rgba(0,0,0,0.6); filter:brightness(0.85) contrast(1.05); }
+        .floating-card { position:absolute; background:var(--surface); border:1px solid var(--border); padding:1.5rem; border-radius:15px; box-shadow:0 20px 60px rgba(0,0,0,0.4); animation:float 3s ease-in-out infinite; }
+        @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-15px)} }
+        .floating-card:first-of-type { bottom:10%; left:-5%; width:165px; }
+        .floating-card:last-of-type { top:10%; right:-5%; width:150px; }
+        .card-number { font-family:'Cormorant Garamond',serif; font-size:2.5rem; font-weight:700; color:var(--primary); line-height:1; }
+        .card-label { font-size:0.8rem; color:var(--gray); margin-top:0.4rem; font-weight:500; }
+        .stats-bar { background:var(--surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:2.5rem 5%; }
+        .stats-grid { max-width:1400px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:2rem; text-align:center; }
+        .stat-number { font-family:'Cormorant Garamond',serif; font-size:3rem; font-weight:700; color:var(--primary); line-height:1; }
+        .stat-label { font-size:0.85rem; color:var(--gray); margin-top:0.5rem; font-weight:500; }
+        .services { padding:7rem 5%; background:var(--light); }
+        .section-header { text-align:center; max-width:700px; margin:0 auto 4.5rem; }
+        .section-subtitle { font-size:0.85rem; color:var(--primary); letter-spacing:0.25em; text-transform:uppercase; font-weight:600; margin-bottom:1rem; }
+        .section-title { font-family:'Cormorant Garamond',serif; font-size:3rem; font-weight:600; color:var(--white); line-height:1.3; margin-bottom:1.5rem; }
+        .section-description { font-size:1.05rem; color:var(--gray); line-height:1.8; font-weight:300; }
+        .services-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:2rem; max-width:1400px; margin:0 auto; }
+        .service-card { background:var(--accent); padding:2.5rem 2rem; border-radius:20px; transition:all 0.4s; border:1px solid rgba(255,255,255,0.05); position:relative; overflow:hidden; }
+        .service-card::before { content:''; position:absolute; top:0; left:0; width:3px; height:0; background:var(--primary); transition:height 0.4s; }
+        .service-card:hover::before { height:100%; }
+        .service-card:hover { transform:translateY(-8px); box-shadow:0 25px 60px rgba(0,0,0,0.4); border-color:var(--border); }
+        .service-icon { font-size:3rem; margin-bottom:1.2rem; display:block; }
+        .service-title { font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-weight:600; color:var(--white); margin-bottom:0.8rem; }
+        .service-description { color:var(--gray); line-height:1.8; font-weight:300; font-size:0.95rem; }
+        .about { padding:7rem 5%; background:var(--dark); }
+        .about-container { max-width:1400px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+        .about-images { position:relative; }
+        .about-image-main { width:100%; height:480px; object-fit:cover; border-radius:20px; box-shadow:0 30px 80px rgba(0,0,0,0.5); filter:brightness(0.8) contrast(1.05); }
+        .about-image-float { position:absolute; bottom:-40px; right:-40px; width:220px; height:220px; object-fit:cover; border-radius:20px; border:6px solid var(--dark); box-shadow:0 20px 60px rgba(0,0,0,0.5); filter:brightness(0.85); }
+        .about-content ul { list-style:none; margin:2rem 0; }
+        .about-content li { padding:0.8rem 0 0.8rem 2rem; position:relative; color:var(--gray); font-weight:300; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.04); }
+        .about-content li:last-child { border-bottom:none; }
+        .about-content li::before { content:'✓'; position:absolute; left:0; color:var(--primary); font-weight:700; }
+        .team { padding:7rem 5%; background:var(--light); }
+        .team-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:2.5rem; max-width:1400px; margin:0 auto; }
+        .team-member { text-align:center; transition:transform 0.4s; }
+        .team-member:hover { transform:translateY(-8px); }
+        .team-photo { width:100%; height:320px; object-fit:cover; border-radius:20px; margin-bottom:1.5rem; box-shadow:0 20px 50px rgba(0,0,0,0.4); filter:brightness(0.85) grayscale(20%); transition:all 0.4s; }
+        .team-member:hover .team-photo { filter:brightness(0.95) grayscale(0%); box-shadow:0 30px 70px rgba(201,168,76,0.2); }
+        .team-name { font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-weight:600; color:var(--white); margin-bottom:0.4rem; }
+        .team-role { color:var(--primary); font-weight:500; font-size:0.9rem; letter-spacing:0.05em; }
+        .contact { padding:7rem 5%; background:var(--surface); border-top:1px solid var(--border); }
+        .contact-container { max-width:1400px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start; }
+        .contact-info { display:flex; flex-direction:column; gap:1.5rem; margin-top:2.5rem; }
+        .contact-item { display:flex; align-items:center; gap:1.2rem; }
+        .contact-icon { width:54px; height:54px; min-width:54px; background:rgba(201,168,76,0.1); border:1px solid var(--border); border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:1.4rem; }
+        .contact-details h4 { font-family:'Cormorant Garamond',serif; font-size:1.2rem; color:var(--white); margin-bottom:0.2rem; }
+        .contact-details p { color:var(--gray); font-weight:300; font-size:0.9rem; }
+        .contact-form { background:var(--accent); padding:2.5rem; border-radius:20px; border:1px solid var(--border); }
+        .form-group { margin-bottom:1.5rem; }
+        .form-group label { display:block; color:var(--white); font-weight:600; margin-bottom:0.5rem; font-size:0.9rem; }
+        .form-group input,.form-group textarea { width:100%; padding:0.9rem 1.2rem; border:1px solid rgba(255,255,255,0.1); border-radius:10px; font-family:'Montserrat',sans-serif; font-size:1rem; transition:all 0.3s; background:var(--surface); color:var(--white); min-height:44px; }
+        .form-group input::placeholder,.form-group textarea::placeholder { color:rgba(255,255,255,0.3); }
+        .form-group input:focus,.form-group textarea:focus { outline:none; border-color:var(--primary); background:var(--dark); }
+        .form-group textarea { resize:vertical; min-height:130px; }
+        .form-submit { width:100%; padding:1.1rem; background:var(--primary); color:var(--dark); border:none; border-radius:50px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:1rem; cursor:pointer; transition:all 0.3s; min-height:48px; }
+        .form-submit:hover { background:var(--gold); transform:translateY(-3px); box-shadow:0 15px 40px rgba(201,168,76,0.3); }
+        footer { background:#050505; color:var(--white); padding:4rem 5% 2rem; border-top:1px solid var(--border); padding-bottom:calc(2rem + env(safe-area-inset-bottom)); }
+        .footer-content { max-width:1400px; margin:0 auto; display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:3.5rem; margin-bottom:2.5rem; }
+        .footer-brand { font-family:'Cormorant Garamond',serif; font-size:1.9rem; font-weight:600; margin-bottom:1rem; color:var(--primary); }
+        .footer-description { color:rgba(255,255,255,0.5); line-height:1.8; font-weight:300; font-size:0.9rem; }
+        .footer-title { font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-weight:600; margin-bottom:1.2rem; color:var(--white); }
+        .footer-links { list-style:none; }
+        .footer-links li { margin-bottom:0.7rem; }
+        .footer-links a { color:rgba(255,255,255,0.5); text-decoration:none; transition:color 0.3s; font-weight:300; font-size:0.9rem; }
+        .footer-links a:hover { color:var(--primary); }
+        .footer-bottom { text-align:center; padding-top:2rem; border-top:1px solid rgba(255,255,255,0.06); color:rgba(255,255,255,0.35); font-weight:300; font-size:0.85rem; }
+        @media (max-width:1024px) { .hero{gap:3rem} .hero-title{font-size:3.2rem} .stats-grid{grid-template-columns:repeat(2,1fr)} }
+        @media (max-width:768px) { nav ul{display:none} .hamburger{display:flex} .hero{grid-template-columns:1fr;padding-top:7rem;gap:2.5rem;min-height:auto;padding-bottom:4rem} .hero-title{font-size:2.6rem} .hero-image img{height:320px} .floating-card{display:none} .about-container,.contact-container{grid-template-columns:1fr;gap:3rem} .about-image-float{display:none} .about-image-main{height:300px} .footer-content{grid-template-columns:1fr 1fr;gap:2rem} .section-title{font-size:2.4rem} .stats-grid{grid-template-columns:repeat(2,1fr)} }
+        @media (max-width:480px) { .hero-title{font-size:2.1rem} .hero-buttons{flex-direction:column} .btn-primary,.btn-secondary{text-align:center;width:100%} .section-title{font-size:2rem} .footer-content{grid-template-columns:1fr} .contact-form{padding:1.8rem} }
+        .fade-up { opacity:0; transform:translateY(20px); transition:opacity 0.6s ease,transform 0.6s ease; }
+        .fade-up.visible { opacity:1; transform:translateY(0); }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">DentalVeda</div>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#equipo">Equipo</a></li>
+                <li><a href="#contacto" class="nav-cta">Cita Online</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#inicio">Inicio</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#nosotros">Nosotros</a>
+            <a href="#equipo">Equipo</a>
+            <a href="#contacto">Cita Online</a>
+        </div>
+    </nav>
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <div class="hero-subtitle">Innovación y Cuidado</div>
+            <h1 class="hero-title">Tu sonrisa es <span>nuestra prioridad</span></h1>
+            <p class="hero-description">En DentalVeda combinamos tecnología de vanguardia con un trato humano excepcional. Creamos experiencias dentales que transforman vidas y sonrisas.</p>
+            <div class="hero-buttons">
+                <a href="#contacto" class="btn-primary">Reservar Cita</a>
+                <a href="#servicios" class="btn-secondary">Nuestros Servicios</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=80" alt="Clínica DentalVeda">
+            <div class="floating-card"><div class="card-number">15+</div><div class="card-label">Años de experiencia</div></div>
+            <div class="floating-card"><div class="card-number">98%</div><div class="card-label">Satisfacción</div></div>
+        </div>
+    </section>
+    <div class="stats-bar"><div class="stats-grid">
+        <div class="fade-up"><div class="stat-number">15+</div><div class="stat-label">Años de experiencia</div></div>
+        <div class="fade-up"><div class="stat-number">5.000+</div><div class="stat-label">Pacientes felices</div></div>
+        <div class="fade-up"><div class="stat-number">98%</div><div class="stat-label">Satisfacción</div></div>
+        <div class="fade-up"><div class="stat-number">4</div><div class="stat-label">Especialistas</div></div>
+    </div></div>
+    <section class="services" id="servicios">
+        <div class="section-header"><div class="section-subtitle">Tratamientos Especializados</div><h2 class="section-title">Servicios de excelencia dental</h2><p class="section-description">Ofrecemos una amplia gama de tratamientos dentales con tecnología de última generación y profesionales altamente cualificados.</p></div>
+        <div class="services-grid">
+            <div class="service-card fade-up"><span class="service-icon">✨</span><h3 class="service-title">Estética Dental</h3><p class="service-description">Blanqueamiento, carillas y diseño de sonrisa para realzar tu belleza natural con resultados sorprendentes.</p></div>
+            <div class="service-card fade-up"><span class="service-icon">🦷</span><h3 class="service-title">Implantología</h3><p class="service-description">Restauración dental con implantes de titanio de última generación, resultados permanentes y naturales.</p></div>
+            <div class="service-card fade-up"><span class="service-icon">👄</span><h3 class="service-title">Ortodoncia</h3><p class="service-description">Tratamientos con brackets invisibles y alineadores transparentes para corregir la posición de tus dientes.</p></div>
+            <div class="service-card fade-up"><span class="service-icon">🛡️</span><h3 class="service-title">Odontología Preventiva</h3><p class="service-description">Limpiezas profesionales, revisiones periódicas y tratamientos preventivos para mantener tu salud bucal.</p></div>
+            <div class="service-card fade-up"><span class="service-icon">⚕️</span><h3 class="service-title">Endodoncia</h3><p class="service-description">Tratamiento de conductos con tecnología microscópica de precisión para salvar tu pieza dental.</p></div>
+            <div class="service-card fade-up"><span class="service-icon">🌟</span><h3 class="service-title">Periodoncia</h3><p class="service-description">Especialistas en el cuidado de encías y tratamiento de enfermedades periodontales con técnicas avanzadas.</p></div>
+        </div>
+    </section>
+    <section class="about" id="nosotros">
+        <div class="about-container">
+            <div class="about-images fade-up"><img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&q=80" alt="Clínica" class="about-image-main"><img src="https://images.unsplash.com/photo-1629909615957-be38ce532551?w=400&q=80" alt="Tecnología" class="about-image-float"></div>
+            <div class="about-content fade-up">
+                <div class="section-subtitle">Nuestra Historia</div>
+                <h2 class="section-title">Más de 15 años cuidando sonrisas</h2>
+                <p class="section-description">DentalVeda nació con la visión de revolucionar la experiencia dental, combinando tecnología de vanguardia con un trato cercano y profesional.</p>
+                <ul>
+                    <li>Tecnología digital 3D para diagnósticos precisos</li>
+                    <li>Equipo multidisciplinar de especialistas certificados</li>
+                    <li>Instalaciones modernas y esterilización de máxima seguridad</li>
+                    <li>Atención personalizada y planes de tratamiento a medida</li>
+                    <li>Financiación flexible para todos los tratamientos</li>
+                </ul>
+                <div style="margin-top:2rem"><a href="#contacto" class="btn-primary">Conoce más</a></div>
+            </div>
+        </div>
+    </section>
+    <section class="team" id="equipo">
+        <div class="section-header"><div class="section-subtitle">Profesionales de Confianza</div><h2 class="section-title">Nuestro equipo experto</h2><p class="section-description">Profesionales especializados y en constante formación, comprometidos con tu bienestar y la excelencia en cada tratamiento.</p></div>
+        <div class="team-grid">
+            <div class="team-member fade-up"><img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&q=80" alt="Dra. Carmen" class="team-photo"><h3 class="team-name">Dra. Carmen Jiménez</h3><p class="team-role">Directora Médica · Implantología</p></div>
+            <div class="team-member fade-up"><img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&q=80" alt="Dra. Isabel" class="team-photo"><h3 class="team-name">Dra. Isabel Moreno</h3><p class="team-role">Ortodoncista · Estética Dental</p></div>
+            <div class="team-member fade-up"><img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80" alt="Dr. Javier" class="team-photo"><h3 class="team-name">Dr. Javier Fernández</h3><p class="team-role">Endodoncia · Periodoncia</p></div>
+            <div class="team-member fade-up"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=400&q=80" alt="Dra. Patricia" class="team-photo"><h3 class="team-name">Dra. Patricia Ruiz</h3><p class="team-role">Odontopediatría · Preventiva</p></div>
+        </div>
+    </section>
+    <section class="contact" id="contacto">
+        <div class="contact-container">
+            <div>
+                <div class="section-subtitle">Estamos Aquí Para Ti</div>
+                <h2 class="section-title">Reserva tu cita hoy</h2>
+                <p class="section-description">Contáctanos para programar tu primera visita gratuita. Nuestro equipo te asesorará de forma personalizada.</p>
+                <div class="contact-info">
+                    <div class="contact-item fade-up"><div class="contact-icon">📍</div><div class="contact-details"><h4>Ubicación</h4><p>Calle Jose Ortega Y Gasset 24, 28006 Madrid</p></div></div>
+                    <div class="contact-item fade-up"><div class="contact-icon">📞</div><div class="contact-details"><h4>Teléfono</h4><p><a href="tel:+34912345678" style="color:inherit;text-decoration:none">+34 912 345 678</a></p></div></div>
+                    <div class="contact-item fade-up"><div class="contact-icon">📧</div><div class="contact-details"><h4>Email</h4><p>info@dentalveda.es</p></div></div>
+                    <div class="contact-item fade-up"><div class="contact-icon">🕒</div><div class="contact-details"><h4>Horario</h4><p>Lun - Vie: 10:00 - 14:00 y 16:00 - 19:30<br>Sábados: 10:00 - 14:00</p></div></div>
+                </div>
+            </div>
+            <div class="contact-form fade-up">
+                <div class="form-group"><label for="nombre">Nombre completo</label><input type="text" id="nombre" placeholder="Tu nombre" autocomplete="name"></div>
+                <div class="form-group"><label for="email">Email</label><input type="email" id="email" placeholder="tu@email.com" autocomplete="email"></div>
+                <div class="form-group"><label for="telefono">Teléfono</label><input type="tel" id="telefono" placeholder="+34 600 000 000" autocomplete="tel"></div>
+                <div class="form-group"><label for="mensaje">Mensaje</label><textarea id="mensaje" placeholder="Cuéntanos cómo podemos ayudarte..."></textarea></div>
+                <button type="submit" class="form-submit">Enviar Mensaje</button>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-content">
+            <div><div class="footer-brand">DentalVeda</div><p class="footer-description">Clínica dental de excelencia comprometida con tu salud bucal y bienestar.</p></div>
+            <div><h4 class="footer-title">Enlaces</h4><ul class="footer-links"><li><a href="#inicio">Inicio</a></li><li><a href="#servicios">Servicios</a></li><li><a href="#nosotros">Nosotros</a></li><li><a href="#equipo">Equipo</a></li></ul></div>
+            <div><h4 class="footer-title">Servicios</h4><ul class="footer-links"><li><a href="#servicios">Estética Dental</a></li><li><a href="#servicios">Implantología</a></li><li><a href="#servicios">Ortodoncia</a></li><li><a href="#servicios">Endodoncia</a></li></ul></div>
+            <div><h4 class="footer-title">Legal</h4><ul class="footer-links"><li><a href="#">Política de Privacidad</a></li><li><a href="#">Términos y Condiciones</a></li><li><a href="#">Aviso Legal</a></li><li><a href="#">Cookies</a></li></ul></div>
+        </div>
+        <div class="footer-bottom"><p>© 2026 DentalVeda. Todos los derechos reservados.</p></div>
+    </footer>
+    <script>
+        window.addEventListener('scroll',()=>{ document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50); });
+        const hamburger=document.getElementById('hamburger'),mobileMenu=document.getElementById('mobileMenu');
+        hamburger.addEventListener('click',()=>{ hamburger.classList.toggle('open'); mobileMenu.classList.toggle('open'); });
+        mobileMenu.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>{ hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); }));
+        document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',function(e){ e.preventDefault(); const t=document.querySelector(this.getAttribute('href')); if(t) window.scrollTo({top:t.offsetTop-70,behavior:'smooth'}); }));
+        document.querySelector('.form-submit').addEventListener('click',e=>{ e.preventDefault(); alert('¡Gracias por contactarnos! Te responderemos pronto.'); });
+        const obs=new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);} }); },{threshold:0.1,rootMargin:'0px 0px -60px 0px'});
+        document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+    </script>
+</body>
+</html>
