@@ -1,0 +1,48 @@
+# Publica la landing de la barbería (carpeta /barberia) en GitHub Pages.
+# Fuente de Pages: "GitHub Actions" (el paso "Setup Pages" intenta activarlo solo).
+name: Deploy barbería to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+      - claude/eager-turing-8znmdm   # rama de trabajo actual (ajusta/elimina cuando quieras)
+    paths:
+      - "barberia/**"
+      - ".github/workflows/deploy-pages.yml"
+  workflow_dispatch:                  # permite lanzarlo a mano desde la pestaña Actions
+
+# Permisos mínimos para que Actions pueda desplegar en Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Un solo despliegue a la vez; no cancelar uno en curso
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true           # intenta activar Pages automáticamente
+
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: barberia             # solo publicamos esta carpeta como raíz del sitio
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
