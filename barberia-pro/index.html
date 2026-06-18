@@ -24,6 +24,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="booking.css" />
 
   <!-- Datos estructurados para Google -->
   <script type="application/ld+json">
@@ -501,6 +502,97 @@
     <a class="btn btn--primary js-book" href="#reserva">Reservar cita</a>
   </div>
 
+  <!-- ============================== MODAL DE RESERVA ============================== -->
+  <div class="bk" id="booking" role="dialog" aria-modal="true" aria-label="Reservar cita" aria-hidden="true">
+    <div class="bk__backdrop" data-bk-close></div>
+    <div class="bk__dialog" role="document">
+      <header class="bk__top">
+        <button class="bk__back" type="button" data-bk-back hidden>‹ Atrás</button>
+        <ol class="bk__steps">
+          <li class="bk__step" data-s="service"><b>1</b><span class="bk__step-label">Servicio</span></li>
+          <li class="bk__step" data-s="barber"><b>2</b><span class="bk__step-label">Profesional</span></li>
+          <li class="bk__step" data-s="datetime"><b>3</b><span class="bk__step-label">Fecha y hora</span></li>
+          <li class="bk__step" data-s="details"><b>4</b><span class="bk__step-label">Tus datos</span></li>
+        </ol>
+        <button class="bk__close" type="button" data-bk-close aria-label="Cerrar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </header>
+
+      <div class="bk__body">
+        <div class="bk__main" id="bkMain">
+          <section data-step="service" hidden>
+            <h2 class="bk__h">¿Qué te quieres hacer?</h2>
+            <p class="bk__sub">Elige uno o varios servicios.</p>
+            <div id="bkServices"></div>
+          </section>
+
+          <section data-step="barber" hidden>
+            <h2 class="bk__h">Elige profesional</h2>
+            <p class="bk__sub">¿Con quién quieres tu cita?</p>
+            <div class="bk-pros" id="bkBarbers"></div>
+          </section>
+
+          <section data-step="datetime" hidden>
+            <h2 class="bk__h">Fecha y hora</h2>
+            <p class="bk__sub">Días con más disponibilidad en verde.</p>
+            <div class="bk-dt">
+              <div id="bkCal"></div>
+              <div id="bkSlots"></div>
+            </div>
+          </section>
+
+          <section data-step="details" hidden>
+            <h2 class="bk__h">Tus datos</h2>
+            <p class="bk__sub">Para confirmarte la cita y enviarte recordatorios.</p>
+            <form class="bk-form" id="bkForm" novalidate>
+              <div class="bk-field">
+                <label for="bkName">Nombre y apellidos <span class="req">*</span></label>
+                <input id="bkName" name="name" autocomplete="name" required />
+                <div class="bk-err" data-for="name"></div>
+              </div>
+              <div class="bk-field">
+                <label for="bkPhone">Teléfono <span class="req">*</span></label>
+                <input id="bkPhone" name="phone" type="tel" autocomplete="tel" placeholder="+34 600 000 000" required />
+                <div class="bk-err" data-for="phone"></div>
+              </div>
+              <div class="bk-field">
+                <label for="bkEmail">Email <span class="req">*</span></label>
+                <input id="bkEmail" name="email" type="email" autocomplete="email" placeholder="tu@email.com" required />
+                <div class="bk-err" data-for="email"></div>
+              </div>
+              <div class="bk-field">
+                <label for="bkNotes">Comentarios (opcional)</label>
+                <textarea id="bkNotes" name="notes" rows="2" placeholder="Algo que debamos saber"></textarea>
+              </div>
+              <label class="bk-check">
+                <input type="checkbox" id="bkPrivacy" required />
+                <span>Acepto la <a href="#">política de privacidad</a> y el tratamiento de mis datos para gestionar la cita.</span>
+              </label>
+              <div class="bk-err" data-for="privacy"></div>
+            </form>
+          </section>
+
+          <section data-step="done" hidden>
+            <div class="bk-done" id="bkDone"></div>
+          </section>
+        </div>
+
+        <aside class="bk__summary" id="bkSummary">
+          <div class="bk__summary-h">Tu reserva</div>
+          <div class="bk-cart" id="bkCart"></div>
+          <div id="bkPick"></div>
+          <button class="bk__addmore" type="button" data-bk-addmore hidden>+ Añadir otro servicio</button>
+          <div class="bk__spacer"></div>
+          <div class="bk__total"><span>Total <small id="bkDur" style="display:block;color:var(--smoke-2);font-size:.78rem"></small></span><b id="bkTotal">—</b></div>
+          <button class="btn btn--primary bk__continue" id="bkContinue" type="button" disabled>Continuar</button>
+          <div class="bk__note" id="bkNote"></div>
+        </aside>
+      </div>
+    </div>
+  </div>
+
   <script src="script.js"></script>
+  <script src="booking.js"></script>
 </body>
 </html>
