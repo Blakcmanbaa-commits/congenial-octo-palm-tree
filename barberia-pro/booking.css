@@ -1,0 +1,227 @@
+/* =====================================================================
+   NAVAJA & ROBLE — Módulo de reserva (estilo Booksy)
+   booking.css  ·  usa las variables de marca de styles.css
+   ===================================================================== */
+
+.bk { position: fixed; inset: 0; z-index: 200; display: none; }
+.bk.is-open { display: block; }
+.bk__backdrop {
+  position: absolute; inset: 0; background: rgba(0,0,0,.66);
+  backdrop-filter: blur(6px); animation: bkFade .25s ease;
+}
+@keyframes bkFade { from { opacity: 0; } }
+
+.bk__dialog {
+  position: relative; z-index: 1;
+  width: min(1080px, 100% - 28px);
+  margin: clamp(10px, 3vh, 34px) auto;
+  max-height: calc(100dvh - clamp(20px, 6vh, 68px));
+  background: var(--ink-2); color: var(--paper);
+  border: 1px solid var(--line); border-radius: 10px;
+  display: flex; flex-direction: column; overflow: hidden;
+  box-shadow: 0 40px 120px rgba(0,0,0,.6);
+  animation: bkUp .3s cubic-bezier(.2,.7,.2,1);
+}
+@keyframes bkUp { from { opacity: 0; transform: translateY(16px); } }
+
+/* ---- Cabecera con pasos --------------------------------------------- */
+.bk__top {
+  flex: none; display: grid; grid-template-columns: 84px 1fr 44px;
+  align-items: center; gap: .5rem; padding: .7rem 1rem;
+  border-bottom: 1px solid var(--line); background: var(--ink-3);
+}
+.bk__back, .bk__close {
+  display: inline-flex; align-items: center; gap: .35em; justify-content: center;
+  height: 40px; border-radius: 999px; color: var(--smoke); font-size: .85rem;
+  transition: color .2s, background .2s;
+}
+.bk__back { padding: 0 .8rem; }
+.bk__back:hover, .bk__close:hover { color: var(--paper); background: rgba(255,255,255,.06); }
+.bk__back[hidden] { visibility: hidden; }
+.bk__close { width: 40px; }
+.bk__close svg { width: 20px; height: 20px; }
+
+.bk__steps { display: flex; justify-content: center; gap: clamp(.4rem, 2vw, 1.6rem); flex-wrap: wrap; }
+.bk__step { display: inline-flex; align-items: center; gap: .5em; color: var(--smoke-2); font-size: .82rem; }
+.bk__step b {
+  width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center;
+  border: 1px solid var(--line); font-family: var(--f-body); font-size: .78rem; font-weight: 700;
+}
+.bk__step.is-active { color: var(--paper); }
+.bk__step.is-active b { background: var(--gold); color: #1a1408; border-color: var(--gold); }
+.bk__step.is-done b { background: rgba(200,160,79,.18); color: var(--gold-2); border-color: var(--gold-deep); }
+.bk__step-label { white-space: nowrap; }
+@media (max-width: 680px) { .bk__step.is-active ~ .bk__step .bk__step-label, .bk__step-label { display: none; } .bk__step.is-active .bk__step-label { display: inline; } }
+
+/* ---- Cuerpo: principal + resumen ----------------------------------- */
+.bk__body { display: grid; grid-template-columns: 1fr 340px; min-height: 0; flex: 1; }
+.bk__main { overflow-y: auto; padding: clamp(1rem, 3vw, 1.8rem); }
+.bk__summary {
+  border-left: 1px solid var(--line); background: var(--ink-3);
+  padding: clamp(1rem, 2.4vw, 1.4rem); display: flex; flex-direction: column; min-height: 0; overflow-y: auto;
+}
+
+.bk__h { font-family: var(--f-display); font-size: clamp(1.4rem, 1rem + 1.6vw, 2rem); margin-bottom: .3rem; }
+.bk__sub { color: var(--smoke); font-size: .92rem; margin-bottom: 1.2rem; }
+
+/* ---- Paso 1 · Servicios -------------------------------------------- */
+.bk-cat { font-size: .74rem; letter-spacing: .16em; text-transform: uppercase; color: var(--gold);
+  margin: 1.4rem 0 .6rem; }
+.bk-cat:first-child { margin-top: 0; }
+.bk-svc {
+  width: 100%; text-align: left; display: grid; grid-template-columns: 1fr auto;
+  gap: .2rem 1rem; align-items: center; padding: 1rem; border: 1px solid var(--line);
+  border-radius: 8px; margin-bottom: .6rem; transition: border-color .2s, background .2s, transform .1s;
+}
+.bk-svc:hover { border-color: var(--gold); background: rgba(200,160,79,.05); }
+.bk-svc:active { transform: scale(.995); }
+.bk-svc.is-picked { border-color: var(--gold); background: rgba(200,160,79,.09); }
+.bk-svc__name { font-family: var(--f-display); font-size: 1.18rem; }
+.bk-svc__meta { grid-column: 1; color: var(--smoke); font-size: .86rem; }
+.bk-svc__price { font-family: var(--f-display); font-size: 1.18rem; color: var(--gold); white-space: nowrap; }
+.bk-svc__add {
+  grid-row: 1 / span 2; grid-column: 2; align-self: center;
+  width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--line);
+  display: grid; place-items: center; color: var(--gold); font-size: 1.2rem; transition: .2s;
+}
+.bk-svc.is-picked .bk-svc__add { background: var(--gold); color: #1a1408; border-color: var(--gold); }
+
+/* ---- Paso 2 · Profesionales ---------------------------------------- */
+.bk-pros { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: .8rem; }
+.bk-pro {
+  display: flex; flex-direction: column; align-items: center; gap: .5rem; text-align: center;
+  padding: 1.1rem .6rem; border: 1px solid var(--line); border-radius: 10px; transition: .2s; position: relative;
+}
+.bk-pro:hover { border-color: var(--gold); }
+.bk-pro.is-picked { border-color: var(--gold); background: rgba(200,160,79,.08); }
+.bk-pro__av {
+  width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--ink); border: 1px solid var(--line); font-family: var(--f-display); font-size: 1.5rem; color: var(--gold);
+  overflow: hidden;
+}
+.bk-pro__av img { width: 100%; height: 100%; object-fit: cover; }
+.bk-pro.is-picked .bk-pro__av { border-color: var(--gold); }
+.bk-pro__name { font-weight: 600; font-size: .95rem; }
+.bk-pro__rating { font-size: .8rem; color: var(--smoke); display: inline-flex; align-items: center; gap: .25em; }
+.bk-pro__rating b { color: var(--gold-2); font-weight: 600; }
+.bk-pro__any { font-size: 1.6rem; }
+
+/* ---- Paso 3 · Fecha y hora ----------------------------------------- */
+.bk-dt { display: grid; grid-template-columns: minmax(260px, 360px) 1fr; gap: clamp(1rem, 3vw, 2rem); align-items: start; }
+.bk-cal__top { display: flex; align-items: center; justify-content: space-between; margin-bottom: .8rem; }
+.bk-cal__month { font-family: var(--f-display); font-size: 1.25rem; text-transform: capitalize; }
+.bk-cal__nav { display: flex; gap: .4rem; }
+.bk-cal__nav button { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--line); color: var(--paper); display: grid; place-items: center; transition: .2s; }
+.bk-cal__nav button:hover:not(:disabled) { border-color: var(--gold); color: var(--gold-2); }
+.bk-cal__nav button:disabled { opacity: .3; cursor: not-allowed; }
+.bk-cal__grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.bk-cal__wd { text-align: center; font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--smoke-2); padding-bottom: .4rem; }
+.bk-day {
+  aspect-ratio: 1; border-radius: 50%; display: flex; flex-direction: column; align-items: center;
+  justify-content: center; gap: 3px; font-size: .92rem; color: var(--paper);
+  border: 1px solid transparent; transition: .15s; position: relative;
+}
+.bk-day:hover:not(:disabled) { border-color: var(--gold); }
+.bk-day:disabled { color: var(--smoke-2); opacity: .45; cursor: not-allowed; text-decoration: line-through; }
+.bk-day.is-empty { visibility: hidden; }
+.bk-day.is-selected { background: var(--gold); color: #1a1408; font-weight: 700; }
+.bk-day__dot { width: 14px; height: 3px; border-radius: 2px; background: transparent; }
+.bk-day.lvl-3 .bk-day__dot { background: #4caf6e; }   /* +10  */
+.bk-day.lvl-2 .bk-day__dot { background: #d9a13a; }   /* 6-10 */
+.bk-day.lvl-1 .bk-day__dot { background: #d4763a; }   /* 1-5  */
+.bk-day.is-selected .bk-day__dot { background: rgba(26,20,8,.5); }
+
+.bk-legend { display: flex; gap: 1rem; margin-top: 1rem; font-size: .74rem; color: var(--smoke); flex-wrap: wrap; }
+.bk-legend span { display: inline-flex; align-items: center; gap: .4em; }
+.bk-legend i { width: 12px; height: 3px; border-radius: 2px; display: inline-block; }
+
+/* franjas + slots */
+.bk-filters { display: flex; gap: .5rem; margin-bottom: 1rem; flex-wrap: wrap; }
+.bk-filter { padding: .45rem 1rem; border: 1px solid var(--line); border-radius: 999px; font-size: .85rem; color: var(--smoke); transition: .2s; }
+.bk-filter:hover { border-color: var(--gold); color: var(--paper); }
+.bk-filter.is-on { background: var(--gold); color: #1a1408; border-color: var(--gold); font-weight: 600; }
+.bk-slots-wrap { min-height: 120px; }
+.bk-period { margin-bottom: 1.2rem; }
+.bk-period__t { font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; color: var(--smoke-2); margin-bottom: .6rem; }
+.bk-slots { display: grid; grid-template-columns: repeat(auto-fill, minmax(78px, 1fr)); gap: .5rem; }
+.bk-slot { padding: .6rem .2rem; border: 1px solid var(--line); border-radius: 8px; font-size: .92rem; color: var(--paper); transition: .15s; }
+.bk-slot:hover { border-color: var(--gold); }
+.bk-slot.is-selected { background: var(--gold); color: #1a1408; font-weight: 700; border-color: var(--gold); }
+.bk-empty { color: var(--smoke); font-size: .9rem; padding: 1.4rem 0; }
+
+/* ---- Paso 4 · Datos ------------------------------------------------ */
+.bk-form { display: grid; gap: 1rem; max-width: 520px; }
+.bk-field { display: grid; gap: .4rem; }
+.bk-field label { font-size: .8rem; letter-spacing: .04em; color: var(--smoke); }
+.bk-field label .req { color: var(--gold); }
+.bk-field input, .bk-field textarea {
+  width: 100%; padding: .85rem 1rem; background: var(--ink); color: var(--paper);
+  border: 1px solid var(--line); border-radius: 8px; font: inherit; font-size: .95rem; transition: border-color .2s;
+}
+.bk-field input:focus, .bk-field textarea:focus { outline: none; border-color: var(--gold); }
+.bk-field input.is-err, .bk-field textarea.is-err { border-color: #d4763a; }
+.bk-field .bk-err { font-size: .78rem; color: #e08a52; min-height: 1em; }
+.bk-check { display: flex; gap: .6rem; align-items: flex-start; font-size: .85rem; color: var(--smoke); }
+.bk-check input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--gold); flex: none; }
+.bk-check a { color: var(--gold-2); text-decoration: underline; }
+
+/* ---- Paso 5 · Confirmación ---------------------------------------- */
+.bk-done { text-align: center; max-width: 460px; margin: clamp(1rem, 4vw, 2.5rem) auto; }
+.bk-done__icon { width: 76px; height: 76px; border-radius: 50%; margin: 0 auto 1.2rem; display: grid; place-items: center;
+  background: rgba(76,175,110,.14); color: #5fd089; border: 1px solid rgba(76,175,110,.4); }
+.bk-done__icon svg { width: 38px; height: 38px; }
+.bk-done h3 { font-family: var(--f-display); font-size: clamp(1.6rem, 1.2rem + 2vw, 2.4rem); margin-bottom: .5rem; }
+.bk-done p { color: var(--smoke); margin-bottom: 1.4rem; }
+.bk-done__card { text-align: left; border: 1px solid var(--line); border-radius: 10px; padding: 1.2rem; margin-bottom: 1.4rem; }
+.bk-done__row { display: flex; justify-content: space-between; gap: 1rem; padding: .5rem 0; border-bottom: 1px solid var(--line-soft); font-size: .92rem; }
+.bk-done__row:last-child { border-bottom: 0; }
+.bk-done__row span { color: var(--smoke); }
+.bk-done__row b { font-weight: 600; text-align: right; }
+.bk-done__actions { display: flex; gap: .8rem; flex-wrap: wrap; justify-content: center; }
+
+/* ---- Resumen (carrito) -------------------------------------------- */
+.bk__summary-h { font-size: .74rem; letter-spacing: .16em; text-transform: uppercase; color: var(--smoke-2); margin-bottom: 1rem; }
+.bk-cart { display: grid; gap: .7rem; margin-bottom: 1rem; }
+.bk-cart__empty { color: var(--smoke-2); font-size: .9rem; }
+.bk-cart__item { display: grid; grid-template-columns: 1fr auto auto; gap: .2rem .6rem; align-items: center; padding-bottom: .7rem; border-bottom: 1px solid var(--line-soft); }
+.bk-cart__name { font-weight: 600; font-size: .95rem; }
+.bk-cart__meta { grid-column: 1 / -1; color: var(--smoke); font-size: .8rem; }
+.bk-cart__price { color: var(--gold-2); font-size: .95rem; }
+.bk-cart__rm { color: var(--smoke-2); width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-size: 1rem; }
+.bk-cart__rm:hover { color: #e08a52; background: rgba(255,255,255,.05); }
+.bk-pick { font-size: .88rem; color: var(--smoke); margin: .15rem 0; }
+.bk-pick b { color: var(--paper); font-weight: 600; }
+.bk__addmore { color: var(--gold-2); font-size: .9rem; padding: .4rem 0; text-align: left; display: inline-flex; gap: .4em; align-items: center; }
+.bk__addmore:hover { color: var(--gold); }
+.bk__spacer { flex: 1; min-height: .6rem; }
+.bk__total { display: flex; justify-content: space-between; align-items: baseline; padding: 1rem 0; border-top: 1px solid var(--line); margin-top: .6rem; }
+.bk__total span { color: var(--smoke); font-size: .9rem; }
+.bk__total b { font-family: var(--f-display); font-size: 1.6rem; }
+.bk__continue { width: 100%; }
+.bk__continue:disabled { opacity: .4; cursor: not-allowed; transform: none; }
+.bk__note { font-size: .76rem; color: var(--smoke-2); text-align: center; margin-top: .7rem; }
+
+/* En la confirmación ocultamos el resumen lateral y centramos el contenido */
+.bk.is-done .bk__body { grid-template-columns: 1fr; }
+.bk.is-done .bk__summary { display: none; }
+
+/* ---- Responsive ---------------------------------------------------- */
+@media (max-width: 860px) {
+  .bk__dialog { width: 100%; height: 100dvh; max-height: 100dvh; margin: 0; border-radius: 0; border: 0; }
+  .bk__body { grid-template-columns: 1fr; }
+  .bk-dt { grid-template-columns: 1fr; }
+  .bk__summary {
+    border-left: 0; border-top: 1px solid var(--line);
+    position: sticky; bottom: 0; flex-direction: row; align-items: center; gap: 1rem;
+    padding: .8rem 1rem calc(.8rem + env(safe-area-inset-bottom));
+  }
+  .bk__summary-h, .bk-cart, .bk__addmore, .bk__spacer, .bk__note { display: none; }
+  .bk__total { border-top: 0; padding: 0; margin: 0; flex-direction: column; align-items: flex-start; gap: 0; }
+  .bk__total b { font-size: 1.25rem; }
+  .bk__continue { width: auto; flex: 1; white-space: nowrap; }
+  /* en la pantalla final sí mostramos el detalle apilado */
+  .bk.is-done .bk__summary { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bk__backdrop, .bk__dialog { animation: none; }
+}

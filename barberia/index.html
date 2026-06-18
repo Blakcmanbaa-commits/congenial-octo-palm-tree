@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <!-- ============================================================= -->
+  <!-- SEO PRINCIPAL  (SUSTITUIR por cliente: title, description, url) -->
+  <!-- ============================================================= -->
+  <title>Navaja &amp; Roble · Barbería en Malasaña, Madrid | Reserva tu cita</title>
+  <meta name="description" content="Barbería moderna en Malasaña, Madrid. Cortes, barba y afeitado tradicional con barberos profesionales. Reserva tu cita online en 1 minuto. ★ 4,5 en Google." />
+  <link rel="canonical" href="https://navajayroble.es/" />
+  <meta name="theme-color" content="#0B0B0C" />
+
+  <!-- Open Graph / redes sociales  (SUSTITUIR: og:image por foto real 1200x630) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_ES" />
+  <meta property="og:site_name" content="Navaja & Roble" />
+  <meta property="og:title" content="Navaja & Roble · Barbería en Malasaña, Madrid" />
+  <meta property="og:description" content="Cortes, barba y afeitado tradicional. Reserva tu cita online en 1 minuto. ★ 4,5 en Google." />
+  <meta property="og:url" content="https://navajayroble.es/" />
+  <meta property="og:image" content="https://placehold.co/1200x630/0B0B0C/C8A04F/png?text=Navaja+%26+Roble" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicon (SUSTITUIR: por el favicon real del cliente) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%230B0B0C'/><text x='50' y='72' font-size='64' font-family='Arial' font-weight='bold' fill='%23C8A04F' text-anchor='middle'>N</text></svg>" />
+
+  <!-- Tipografías: Bebas Neue (titulares) + Inter (cuerpo). font-display: swap -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- ============================================================= -->
+  <!-- JSON-LD Schema.org · BarberShop                                -->
+  <!-- SUSTITUIR por cliente: name, telephone, address, geo, horario, -->
+  <!-- aggregateRating, sameAs (redes), url e image.                  -->
+  <!-- ============================================================= -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BarberShop",
+    "@id": "https://navajayroble.es/#barberia",
+    "name": "Navaja & Roble",
+    "description": "Barbería moderna en Malasaña, Madrid. Cortes, barba y afeitado tradicional.",
+    "url": "https://navajayroble.es/",
+    "image": "https://placehold.co/1200x630/0B0B0C/C8A04F/png?text=Navaja+%26+Roble",
+    "logo": "https://placehold.co/512x512/0B0B0C/C8A04F/png?text=N%26R",
+    "telephone": "+34910555123",
+    "priceRange": "€€",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "Efectivo, Tarjeta, Bizum",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Calle de Fuencarral, 78",
+      "addressLocality": "Madrid",
+      "addressRegion": "Madrid",
+      "postalCode": "28004",
+      "addressCountry": "ES"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 40.4250,
+      "longitude": -3.7016
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "10:00",
+        "closes": "21:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "10:00",
+        "closes": "20:00"
+      }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.5",
+      "reviewCount": "487"
+    },
+    "sameAs": [
+      "https://www.instagram.com/navajayroble",
+      "https://www.tiktok.com/@navajayroble"
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <!-- Enlace de salto para accesibilidad / teclado -->
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- ============================================================= -->
+  <!-- 1 · HEADER FIJO                                                -->
+  <!-- ============================================================= -->
+  <header class="site-header" id="inicio">
+    <div class="container header__inner">
+      <!-- Logo (SUSTITUIR: por <img> con el logo real del cliente) -->
+      <a class="logo" href="#inicio" aria-label="Navaja y Roble, inicio">
+        <span class="logo__mark" aria-hidden="true">N&amp;R</span>
+        <span class="logo__text">Navaja <em>&amp;</em> Roble</span>
+      </a>
+
+      <!-- Navegación principal -->
+      <nav class="nav" id="nav-principal" aria-label="Navegación principal">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="#servicios">Servicios</a></li>
+          <li><a class="nav__link" href="#galeria">Galería</a></li>
+          <li><a class="nav__link" href="#equipo">Equipo</a></li>
+          <li><a class="nav__link" href="#ubicacion">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__actions">
+        <!-- CTA principal: siempre visible (también en móvil) -->
+        <a class="btn btn--accent btn--book" href="#reservar" data-book>
+          <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M7 2a1 1 0 0 1 1 1v1h8V3a1 1 0 1 1 2 0v1h1a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h1V3a1 1 0 0 1 1-1Zm13 8H4v9a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-9Z"/></svg>
+          <span>Reservar cita</span>
+        </a>
+
+        <!-- Botón hamburguesa (solo móvil) -->
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-principal" aria-label="Abrir menú">
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Capa oscura tras el menú móvil abierto -->
+  <div class="nav-backdrop" hidden></div>
+
+  <main id="contenido">
+    <!-- ============================================================= -->
+    <!-- 2 · HERO A PANTALLA COMPLETA                                   -->
+    <!-- ============================================================= -->
+    <section class="hero" aria-labelledby="hero-title">
+      <!-- SUSTITUIR: foto real del local / un corte potente (1920x1080) -->
+      <img class="hero__bg" src="https://placehold.co/1920x1080/121214/2A2A2E/png?text=Foto+barber%C3%ADa" alt="" fetchpriority="high" />
+      <div class="hero__overlay" aria-hidden="true"></div>
+
+      <div class="container hero__content">
+        <p class="hero__eyebrow reveal">Barbería · Malasaña, Madrid</p>
+        <h1 class="hero__title reveal" id="hero-title">Tu mejor versión<br />empieza en la silla</h1>
+        <p class="hero__subtitle reveal">La barbería que te trae los mejores estilos. Corte, barba y afeitado con detalle.</p>
+
+        <div class="hero__cta reveal">
+          <a class="btn btn--accent btn--lg" href="#reservar" data-book>Reservar cita</a>
+          <a class="btn btn--ghost btn--lg" href="#servicios">Ver servicios</a>
+        </div>
+
+        <!-- Franja de prueba social: rating + barrio -->
+        <div class="hero__trust reveal">
+          <span class="stars" role="img" aria-label="Valoración 4,5 de 5 estrellas en Google">
+            <span class="stars__fill" style="--rating: 90%"></span>
+          </span>
+          <span class="hero__trust-text"><strong>4,5</strong> · 487 reseñas en Google</span>
+          <span class="hero__trust-sep" aria-hidden="true">•</span>
+          <span class="hero__trust-text">C/ Fuencarral 78, Malasaña</span>
+        </div>
+      </div>
+
+      <a class="hero__scroll" href="#experiencia" aria-label="Bajar a la siguiente sección">
+        <span class="hero__scroll-mouse" aria-hidden="true"></span>
+      </a>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- 3 · EXPERIENCIA / SOBRE NOSOTROS                               -->
+    <!-- ============================================================= -->
+    <section class="section about" id="experiencia" aria-labelledby="about-title">
+      <div class="container about__grid">
+        <div class="about__media reveal">
+          <!-- SUSTITUIR: foto real del ambiente / interior del local (800x1000) -->
+          <img src="https://placehold.co/800x1000/121214/C8A04F/png?text=Ambiente+del+local" alt="Interior de la barbería Navaja y Roble con sillones de barbero" loading="lazy" />
+        </div>
+        <div class="about__text reveal">
+          <p class="eyebrow">Más que un corte</p>
+          <h2 class="section__title" id="about-title">Una experiencia hecha a tu medida</h2>
+          <p>En <strong>Navaja &amp; Roble</strong> no entras a por un corte rápido: entras a desconectar. Ambiente cuidado, buena música y un café mientras nuestros barberos estudian qué te favorece de verdad.</p>
+          <p>Atención personalizada, técnica clásica y tendencias actuales. Cada servicio termina con el peinado y los consejos para que lo mantengas perfecto en casa.</p>
+          <ul class="about__highlights">
+            <li><span class="about__num">8</span> años cuidando barbas en el barrio</li>
+            <li><span class="about__num">15k+</span> cortes al año</li>
+            <li><span class="about__num">4,5★</span> valoración media en Google</li>
+          </ul>
+          <a class="btn btn--accent" href="#reservar" data-book>Reservar mi cita</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- 4 · SERVICIOS                                                  -->
+    <!-- SUSTITUIR por cliente: nombres, descripciones y PRECIOS         -->
+    <!-- ============================================================= -->
+    <section class="section services" id="servicios" aria-labelledby="services-title">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow">Servicios</p>
+          <h2 class="section__title" id="services-title">Lo que hacemos</h2>
+          <p class="section__lead">Precios cerrados, sin sorpresas. Reserva el servicio que necesites.</p>
+        </header>
+
+        <ul class="services__grid">
+          <li class="service-card reveal">
+            <div class="service-card__head">
+              <h3 class="service-card__name">Corte</h3>
+              <span class="service-card__price">15€</span>
+            </div>
+            <p class="service-card__desc">Lavado, corte a tijera o máquina y peinado final.</p>
+            <a class="btn btn--ghost btn--block" href="#reservar" data-book data-service="Corte">Reservar</a>
+          </li>
+
+          <li class="service-card service-card--featured reveal">
+            <span class="service-card__tag">Más pedido</span>
+            <div class="service-card__head">
+              <h3 class="service-card__name">Corte + Barba</h3>
+              <span class="service-card__price">22€</span>
+            </div>
+            <p class="service-card__desc">El combo completo: corte, perfilado de barba y toalla caliente.</p>
+            <a class="btn btn--accent btn--block" href="#reservar" data-book data-service="Corte + Barba">Reservar</a>
+          </li>
+
+          <li class="service-card reveal">
+            <div class="service-card__head">
+              <h3 class="service-card__name">Arreglo de barba</h3>
+              <span class="service-card__price">10€</span>
+            </div>
+            <p class="service-card__desc">Perfilado, recorte y acabado con aceites.</p>
+            <a class="btn btn--ghost btn--block" href="#reservar" data-book data-service="Arreglo de barba">Reservar</a>
+          </li>
+
+          <li class="service-card reveal">
+            <div class="service-card__head">
+              <h3 class="service-card__name">Afeitado tradicional</h3>
+              <span class="service-card__price">18€</span>
+            </div>
+            <p class="service-card__desc">Navaja, toalla caliente y ritual clásico de barbería.</p>
+            <a class="btn btn--ghost btn--block" href="#reservar" data-book data-service="Afeitado tradicional">Reservar</a>
+          </li>
+
+          <li class="service-card reveal">
+            <div class="service-card__head">
+              <h3 class="service-card__name">Corte infantil</h3>
+              <span class="service-card__price">12€</span>
+            </div>
+            <p class="service-card__desc">Para los más peques, con paciencia y buen rollo.</p>
+            <a class="btn btn--ghost btn--block" href="#reservar" data-book data-service="Corte infantil">Reservar</a>
+          </li>
+
+          <li class="service-card reveal">
+            <div class="service-card__head">
+              <h3 class="service-card__name">Tratamiento capilar</h3>
+              <span class="service-card__price">20€</span>
+            </div>
+            <p class="service-card__desc">Diagnóstico, exfoliación e hidratación del cuero cabelludo.</p>
+            <a class="btn btn--ghost btn--block" href="#reservar" data-book data-service="Tratamiento capilar">Reservar</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- 5 · GALERÍA                                                    -->
+    <!-- SUSTITUIR: fotos reales de cortes / local (800x800)            -->
+    <!-- ============================================================= -->
+    <section class="section gallery" id="galeria" aria-labelledby="gallery-title">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow">Galería</p>
+          <h2 class="section__title" id="gallery-title">Nuestro trabajo</h2>
+          <p class="section__lead">Algunos de los cortes y acabados que salen de nuestras sillas.</p>
+        </header>
+
+        <div class="gallery__grid">
+          <figure class="gallery__item reveal"><img src="https://placehold.co/800x800/121214/C8A04F/png?text=Corte+1" alt="Degradado clásico con acabado mate" loading="lazy" /></figure>
+          <figure class="gallery__item gallery__item--tall reveal"><img src="https://placehold.co/800x1100/121214/C8A04F/png?text=Corte+2" alt="Barba perfilada con difuminado en las patillas" loading="lazy" /></figure>
+          <figure class="gallery__item reveal"><img src="https://placehold.co/800x800/121214/C8A04F/png?text=Corte+3" alt="Corte texturizado peinado hacia atrás" loading="lazy" /></figure>
+          <figure class="gallery__item reveal"><img src="https://placehold.co/800x800/121214/C8A04F/png?text=Local+1" alt="Detalle de las herramientas de barbería sobre el tocador" loading="lazy" /></figure>
+          <figure class="gallery__item gallery__item--wide reveal"><img src="https://placehold.co/1100x800/121214/C8A04F/png?text=Local+2" alt="Vista general de la barbería con sus sillones" loading="lazy" /></figure>
+          <figure class="gallery__item reveal"><img src="https://placehold.co/800x800/121214/C8A04F/png?text=Corte+4" alt="Afeitado tradicional con navaja y toalla caliente" loading="lazy" /></figure>
+          <figure class="gallery__item reveal"><img src="https://placehold.co/800x800/121214/C8A04F/png?text=Corte+5" alt="Corte infantil con degradado suave" loading="lazy" /></figure>
+          <figure class="gallery__item reveal"><img src="https://placehold.co/800x800/121214/C8A04F/png?text=Corte+6" alt="Peinado clásico con raya marcada" loading="lazy" /></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- 6 · POR QUÉ ELEGIRNOS                                          -->
+    <!-- ============================================================= -->
+    <section class="section why" aria-labelledby="why-title">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow">Por qué elegirnos</p>
+          <h2 class="section__title" id="why-title">Cómo lo hacemos</h2>
+        </header>
+
+        <ul class="why__grid">
+          <li class="why__item reveal">
+            <span class="why__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="28" height="28"><path fill="currentColor" d="M12 2 4 5v6c0 5 3.4 9.3 8 11 4.6-1.7 8-6 8-11V5l-8-3Zm-1 14-3.5-3.5 1.4-1.4L11 13.2l4.6-4.6 1.4 1.4L11 16Z"/></svg>
+            </span>
+            <h3 class="why__title">Equipo profesional</h3>
+            <p>Barberos formados y con años de oficio. Tu estilo en buenas manos.</p>
+          </li>
+          <li class="why__item reveal">
+            <span class="why__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="28" height="28"><path fill="currentColor" d="M12 2a5 5 0 0 1 5 5c0 1.9-1 3.4-2.5 4.3l.8 9.2a1 1 0 0 1-1 1.1H9.7a1 1 0 0 1-1-1.1l.8-9.2A4.98 4.98 0 0 1 7 7a5 5 0 0 1 5-5Z"/></svg>
+            </span>
+            <h3 class="why__title">Productos de calidad</h3>
+            <p>Trabajamos con marcas premium de cuidado masculino que sí notarás.</p>
+          </li>
+          <li class="why__item reveal">
+            <span class="why__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="28" height="28"><path fill="currentColor" d="M12 1a11 11 0 1 0 0 22 11 11 0 0 0 0-22Zm1 11.4 4 2.3-1 1.7-5-2.9V6h2v6.4Z"/></svg>
+            </span>
+            <h3 class="why__title">Reserva rápida online</h3>
+            <p>Pide cita en menos de un minuto, sin llamadas ni esperas.</p>
+          </li>
+          <li class="why__item reveal">
+            <span class="why__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="28" height="28"><path fill="currentColor" d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2Z"/></svg>
+            </span>
+            <h3 class="why__title">Puntualidad</h3>
+            <p>Respetamos tu tiempo: cita reservada, cita atendida a su hora.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- 7 · EQUIPO                                                     -->
+    <!-- SUSTITUIR: fotos (600x600), nombres y especialidades reales    -->
+    <!-- ============================================================= -->
+    <section class="section team" id="equipo" aria-labelledby="team-title">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow">Equipo</p>
+          <h2 class="section__title" id="team-title">Las manos detrás del estilo</h2>
+        </header>
+
+        <ul class="team__grid">
+          <li class="team-card reveal">
+            <img class="team-card__photo" src="https://placehold.co/600x600/121214/C8A04F/png?text=Alvaro" alt="Álvaro Méndez, fundador y barbero" loading="lazy" />
+            <h3 class="team-card__name">Álvaro Méndez</h3>
+            <p class="team-card__role">Fundador · Degradados y diseño</p>
+          </li>
+          <li class="team-card reveal">
+            <img class="team-card__photo" src="https://placehold.co/600x600/121214/C8A04F/png?text=Ruben" alt="Rubén Castro, barbero senior" loading="lazy" />
+            <h3 class="team-card__name">Rubén Castro</h3>
+            <p class="team-card__role">Barbero senior · Barba y afeitado</p>
+          </li>
+          <li class="team-card reveal">
+            <img class="team-card__photo" src="https://placehold.co/600x600/121214/C8A04F/png?text=Leo" alt="Leo Fernández, barbero" loading="lazy" />
+            <h3 class="team-card__name">Leo Fernández</h3>
+            <p class="team-card__role">Barbero · Cortes clásicos a tijera</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- 8 · RESEÑAS                                                    -->
+    <!-- SUSTITUIR: testimonios reales y enlace a Google                -->
+    <!-- ============================================================= -->
+    <section class="section reviews" id="resenas" aria-labelledby="reviews-title">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow">Reseñas</p>
+          <h2 class="section__title" id="reviews-title">Lo que dicen los clientes</h2>
+        </header>
+
+        <ul class="reviews__grid">
+          <li class="review-card reveal">
+            <span class="stars" role="img" aria-label="5 de 5 estrellas"><span class="stars__fill" style="--rating: 100%"></span></span>
+            <blockquote>“El mejor degradado que me han hecho en Madrid. Salí como nuevo y encima sin esperas.”</blockquote>
+            <figcaption class="review-card__author">— Sergio R.</figcaption>
+          </li>
+          <li class="review-card reveal">
+            <span class="stars" role="img" aria-label="5 de 5 estrellas"><span class="stars__fill" style="--rating: 100%"></span></span>
+            <blockquote>“Ambiente top, te tratan genial y la barba me la dejaron impecable. Repito fijo.”</blockquote>
+            <figcaption class="review-card__author">— Daniel M.</figcaption>
+          </li>
+          <li class="review-card reveal">
+            <span class="stars" role="img" aria-label="4 de 5 estrellas"><span class="stars__fill" style="--rating: 80%"></span></span>
+            <blockquote>“Reservé online en un momento y a la hora exacta estaba en la silla. Profesionales de verdad.”</blockquote>
+            <figcaption class="review-card__author">— Iván L.</figcaption>
+          </li>
+        </ul>
+
+        <div class="reviews__cta reveal">
+          <!-- SUSTITUIR: enlace al perfil de Google del negocio -->
+          <a class="btn btn--ghost" href="https://www.google.com/search?q=Navaja+y+Roble+barber%C3%ADa+Madrid" target="_blank" rel="noopener">Ver todas en Google</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- 9 · RESERVA (formulario en la página)                          -->
+    <!-- El CTA "Reservar" apunta aquí. Si se define BOOKING_URL en      -->
+    <!-- script.js, los botones llevarán a esa plataforma externa.      -->
+    <!-- ============================================================= -->
+    <section class="section booking" id="reservar" aria-labelledby="booking-title">
+      <div class="container booking__grid">
+        <div class="booking__intro reveal">
+          <p class="eyebrow">Reserva</p>
+          <h2 class="section__title" id="booking-title">Pide tu cita</h2>
+          <p>Rellena el formulario y confirmamos tu cita al instante. ¿Prefieres hablar? Llámanos o escríbenos por WhatsApp.</p>
+          <ul class="booking__contact">
+            <li>
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.6.6 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.6 3.6a1 1 0 0 1-.25 1l-2.25 2.2Z"/></svg>
+              <a href="tel:+34910555123">+34 910 555 123</a>
+            </li>
+            <li>
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.7 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.5 14c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.6a9.3 9.3 0 0 1-3.6-3.2c-.3-.4-.8-1.1-.8-2.1s.5-1.5.7-1.7c.2-.2.4-.3.6-.3h.4c.1 0 .3 0 .5.4l.6 1.5c.1.1.1.3 0 .5l-.3.4-.3.3c-.1.1-.2.3-.1.5.2.4.6 1 1.1 1.5.7.6 1.2.8 1.5.9.2.1.4.1.5 0l.6-.7c.2-.2.4-.1.5-.1l1.4.7c.2.1.4.2.4.3.1.1.1.4 0 .9Z"/></svg>
+              <a href="#" data-whatsapp>Escríbenos por WhatsApp</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Formulario. En el demo no hay backend: al enviar abrimos WhatsApp -->
+        <!-- con los datos. En producción: conectar a backend o a Booksy/Fresha. -->
+        <form class="booking__form reveal" id="booking-form" novalidate>
+          <div class="field">
+            <label for="bf-name">Nombre</label>
+            <input id="bf-name" name="name" type="text" autocomplete="name" required placeholder="Tu nombre" />
+          </div>
+          <div class="field">
+            <label for="bf-phone">Teléfono</label>
+            <input id="bf-phone" name="phone" type="tel" autocomplete="tel" required placeholder="600 000 000" />
+          </div>
+          <div class="field">
+            <label for="bf-service">Servicio</label>
+            <select id="bf-service" name="service" required>
+              <option value="" disabled selected>Elige un servicio</option>
+              <option>Corte</option>
+              <option>Corte + Barba</option>
+              <option>Arreglo de barba</option>
+              <option>Afeitado tradicional</option>
+              <option>Corte infantil</option>
+              <option>Tratamiento capilar</option>
+            </select>
+          </div>
+          <div class="field field--row">
+            <div>
+              <label for="bf-date">Día</label>
+              <input id="bf-date" name="date" type="date" required />
+            </div>
+            <div>
+              <label for="bf-time">Hora</label>
+              <input id="bf-time" name="time" type="time" required />
+            </div>
+          </div>
+          <div class="field">
+            <label for="bf-notes">Comentarios <span class="field__opt">(opcional)</span></label>
+            <textarea id="bf-notes" name="notes" rows="2" placeholder="¿Algún barbero preferido o detalle a tener en cuenta?"></textarea>
+          </div>
+          <button class="btn btn--accent btn--block btn--lg" type="submit">Confirmar reserva</button>
+          <p class="booking__form-note" id="booking-feedback" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- 10 · UBICACIÓN Y HORARIO                                       -->
+    <!-- ============================================================= -->
+    <section class="section location" id="ubicacion" aria-labelledby="location-title">
+      <div class="container location__grid">
+        <div class="location__info reveal">
+          <p class="eyebrow">Dónde estamos</p>
+          <h2 class="section__title" id="location-title">Ubicación y horario</h2>
+
+          <address class="location__address">
+            <p><strong>Navaja &amp; Roble</strong><br />Calle de Fuencarral, 78<br />28004 Madrid (Malasaña)</p>
+            <p><a class="location__phone" href="tel:+34910555123">+34 910 555 123</a></p>
+          </address>
+
+          <table class="hours">
+            <caption class="sr-only">Horario de apertura</caption>
+            <tbody>
+              <tr><th scope="row">Lunes – Viernes</th><td>10:00 – 21:00</td></tr>
+              <tr><th scope="row">Sábado</th><td>10:00 – 20:00</td></tr>
+              <tr><th scope="row">Domingo</th><td><span class="hours__closed">Cerrado</span></td></tr>
+            </tbody>
+          </table>
+
+          <div class="location__social">
+            <a class="social-link" href="https://www.instagram.com/navajayroble" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M12 2c2.7 0 3 0 4.1.1 1 0 1.7.2 2.3.5.6.2 1.1.5 1.6 1 .5.5.8 1 1 1.6.3.6.4 1.3.5 2.3.1 1.1.1 1.4.1 4.1s0 3-.1 4.1c0 1-.2 1.7-.5 2.3-.2.6-.5 1.1-1 1.6-.5.5-1 .8-1.6 1-.6.3-1.3.4-2.3.5-1.1.1-1.4.1-4.1.1s-3 0-4.1-.1c-1 0-1.7-.2-2.3-.5-.6-.2-1.1-.5-1.6-1-.5-.5-.8-1-1-1.6-.3-.6-.4-1.3-.5-2.3C2 15 2 14.7 2 12s0-3 .1-4.1c0-1 .2-1.7.5-2.3.2-.6.5-1.1 1-1.6.5-.5 1-.8 1.6-1 .6-.3 1.3-.4 2.3-.5C9 2 9.3 2 12 2Zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0 1.8a3.2 3.2 0 1 1 0 6.4 3.2 3.2 0 0 1 0-6.4Zm5.2-3a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4Z"/></svg>
+              <span>Instagram</span>
+            </a>
+            <a class="social-link" href="https://www.tiktok.com/@navajayroble" target="_blank" rel="noopener" aria-label="TikTok">
+              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M16 3c.3 2.1 1.5 3.8 3.5 4.2v2.7c-1.3 0-2.5-.4-3.5-1v5.8a5.8 5.8 0 1 1-5.8-5.8c.3 0 .6 0 .9.1v2.8a3 3 0 1 0 2.1 2.9V3H16Z"/></svg>
+              <span>TikTok</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="location__map reveal">
+          <!-- SUSTITUIR: iframe real de Google Maps del negocio.            -->
+          <!-- Maps → Compartir → Insertar un mapa → copia el <iframe> aquí. -->
+          <div class="map-placeholder" role="img" aria-label="Mapa de la ubicación: Calle de Fuencarral 78, Madrid">
+            <svg viewBox="0 0 24 24" width="40" height="40" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"/></svg>
+            <span>Mapa de Google · sustituir por el iframe real</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- 11 · CTA FINAL                                                 -->
+    <!-- ============================================================= -->
+    <section class="final-cta" aria-labelledby="final-cta-title">
+      <div class="container final-cta__inner reveal">
+        <h2 class="final-cta__title" id="final-cta-title">Reserva tu cita hoy</h2>
+        <p class="final-cta__text">Tu próximo corte está a un clic. Plazas limitadas cada día.</p>
+        <a class="btn btn--dark btn--lg" href="#reservar" data-book>Reservar cita</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================= -->
+  <!-- FOOTER                                                         -->
+  <!-- ============================================================= -->
+  <footer class="site-footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <span class="logo__text logo__text--footer">Navaja <em>&amp;</em> Roble</span>
+        <p>Barbería moderna en Malasaña, Madrid. Cortes, barba y afeitado tradicional.</p>
+      </div>
+
+      <nav class="footer__nav" aria-label="Navegación del pie">
+        <h3 class="footer__heading">Navegación</h3>
+        <ul>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#galeria">Galería</a></li>
+          <li><a href="#equipo">Equipo</a></li>
+          <li><a href="#ubicacion">Contacto</a></li>
+          <li><a href="#reservar" data-book>Reservar cita</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer__contact">
+        <h3 class="footer__heading">Contacto</h3>
+        <ul>
+          <li>C/ Fuencarral, 78 · Madrid</li>
+          <li><a href="tel:+34910555123">+34 910 555 123</a></li>
+        </ul>
+        <div class="footer__social">
+          <a href="https://www.instagram.com/navajayroble" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 2c2.7 0 3 0 4.1.1 1 0 1.7.2 2.3.5.6.2 1.1.5 1.6 1 .5.5.8 1 1 1.6.3.6.4 1.3.5 2.3.1 1.1.1 1.4.1 4.1s0 3-.1 4.1c0 1-.2 1.7-.5 2.3-.2.6-.5 1.1-1 1.6-.5.5-1 .8-1.6 1-.6.3-1.3.4-2.3.5-1.1.1-1.4.1-4.1.1s-3 0-4.1-.1c-1 0-1.7-.2-2.3-.5-.6-.2-1.1-.5-1.6-1-.5-.5-.8-1-1-1.6-.3-.6-.4-1.3-.5-2.3C2 15 2 14.7 2 12s0-3 .1-4.1c0-1 .2-1.7.5-2.3.2-.6.5-1.1 1-1.6.5-.5 1-.8 1.6-1 .6-.3 1.3-.4 2.3-.5C9 2 9.3 2 12 2Zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0 1.8a3.2 3.2 0 1 1 0 6.4 3.2 3.2 0 0 1 0-6.4Zm5.2-3a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4Z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@navajayroble" target="_blank" rel="noopener" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M16 3c.3 2.1 1.5 3.8 3.5 4.2v2.7c-1.3 0-2.5-.4-3.5-1v5.8a5.8 5.8 0 1 1-5.8-5.8c.3 0 .6 0 .9.1v2.8a3 3 0 1 0 2.1 2.9V3H16Z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer__bottom">
+      <p>© <span id="year"></span> Navaja &amp; Roble. Todos los derechos reservados.</p>
+      <ul class="footer__legal">
+        <!-- SUSTITUIR: enlaces reales de aviso legal / privacidad -->
+        <li><a href="#">Aviso legal</a></li>
+        <li><a href="#">Privacidad</a></li>
+        <li><a href="#">Cookies</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- Botón flotante de WhatsApp (número en variable de script.js) -->
+  <a class="whatsapp-fab" href="#" data-whatsapp aria-label="Escríbenos por WhatsApp">
+    <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.7 15L2 22l5.1-1.3A10 10 0 1 0 12 2Zm5.5 14c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.6a9.3 9.3 0 0 1-3.6-3.2c-.3-.4-.8-1.1-.8-2.1s.5-1.5.7-1.7c.2-.2.4-.3.6-.3h.4c.1 0 .3 0 .5.4l.6 1.5c.1.1.1.3 0 .5l-.3.4-.3.3c-.1.1-.2.3-.1.5.2.4.6 1 1.1 1.5.7.6 1.2.8 1.5.9.2.1.4.1.5 0l.6-.7c.2-.2.4-.1.5-.1l1.4.7c.2.1.4.2.4.3.1.1.1.4 0 .9Z"/></svg>
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>
